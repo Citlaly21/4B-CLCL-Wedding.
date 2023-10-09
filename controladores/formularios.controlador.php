@@ -1,24 +1,23 @@
 <?php 
-
+require_once("modelos/formularios.modelo.php");
 class ControladorFormularios{
     # Registro
 
     static public function ctrRegistro(){
         if(isset($_POST["registroNombre"])){
-
+    
             if (preg_match("/^[a-zA-Z]+$/", $_POST["registroNombre"]) && 
-                preg_match('/^[_a-Z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})+$/', $_POST["registroEmail"]) &&
+                preg_match('/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})+$/', $_POST["registroEmail"]) &&
                 preg_match('/^[0-9a-zA-Z]+$/', $_POST["registroPassword"])) {
                 $tabla = "registros";
-
+    
                 $token = md5($_POST["registroNombre"] . "+" . $_POST["registroEmail"]);
-
-
+    
                 $datos = array( "token" => $token,
                                 "nombre"=>$_POST["registroNombre"],
                                 "email"=>$_POST["registroEmail"],
                                 "password"=>$_POST["registroPassword"]);
-
+    
                 $respuesta = ModeloFormularios::mdlRegistro($tabla, $datos);
                 return $respuesta;
             } else {
@@ -27,6 +26,7 @@ class ControladorFormularios{
             }
         }
     }
+    
 
     /**
      * Seleccionar registros de la tabla
@@ -61,7 +61,7 @@ class ControladorFormularios{
                     if(window.history.replaceState){
                         window.history.replaceState(null, null, window.location.href);
                     }
-                    window.location = "index.php?pagina=inicio";
+                    window.location = "index.php?pagina=ingreso";
                     </script>';
                 } else {
                     echo '<script>

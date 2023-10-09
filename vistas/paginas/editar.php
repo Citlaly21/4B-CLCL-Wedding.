@@ -1,14 +1,20 @@
 <?php
+require_once("controladores/formularios.controlador.php");
 
 if (isset($_GET["token"])) {
     $item = "token";
     $valor = $_GET["token"];
 
+
+
+    
     $usuario = ControladorFormularios::ctrSeleccionarRegistros($item, $valor);
     //echo '<pre>'; print_r($usuario); '</pre>';
 }
 
 ?>
+
+<section class="breadcumd__banner">
 
 <div class="d-flex justify-content-center text-center">
 
@@ -62,7 +68,6 @@ if (isset($_GET["token"])) {
                 ?>">
             </div>
         </div>
-
         <?php
             $actualizar = ControladorFormularios::ctrActualizarRegistro();
             if ($actualizar == "ok") {
@@ -88,10 +93,9 @@ if (isset($_GET["token"])) {
             }
 
         ?>
-
         <button type="submit" class="btn btn-primary">Actualizar</button>
-
     </form>
 </div>
 
 </div>
+</section>

@@ -1,6 +1,8 @@
-<?php 
+<?php
    session_start();
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +40,7 @@
    <div class="container">
       <div class="header-wrapper">
          <div class="logo-menu">
-            <a href="index.php?pagina=about" class="logo">
+            <a href="index.php?pagina=plantilla" class="logo">
                <img src="assets/img/logo/logo1.png" alt="img">
             </a>
          </div>
@@ -50,7 +52,7 @@
          <ul class="main-menu">
 
             <li>
-               <a href="index.php?pagina=registro">Access Now<i class="fas fa-chevron-down"></i></a>
+               <a href="#">Access Now<i class="fas fa-chevron-down"></i></a>
                <ul class="sub-menu">
                   
                   <?php if (isset($_GET["pagina"])) : ?>

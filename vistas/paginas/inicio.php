@@ -1,3 +1,4 @@
+
 <?php 
 
     if (!isset($_SESSION["validarIngreso"])) {
@@ -5,17 +6,34 @@
       return;
     } else {
         if ($_SESSION["validarIngreso"] != "ok") {
-            echo '<script>window.location="index.php?pagina=ingreso";</script>';  
+            echo '<script>window.location="index.php?pagina=inicio";</script>';  
             return;
         }
     }
-    
+    ?>
+    <?php
+    require_once("controladores/formularios.controlador.php");
 
     $usuarios = ControladorFormularios::ctrSeleccionarRegistros(null, null);
     //echo '<pre>'; print_r($usuarios); echo '</pre>';
 
 ?>
-<table class="table table-striped">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://kit.fontawesome.com/1f54bfc51f.js" crossorigin="anonymous"></script>
+
+<section class="breadcumd__banner">
+<table class="table table-striped tabla-blanca">
     <thead>
         <tr>
             <th>#</th>
@@ -53,3 +71,11 @@
         <?php endforeach ?>
     </tbody>
 </table>
+        </section>
+
+
+<style>
+.tabla-blanca {
+    background-color: white; 
+}
+</style>

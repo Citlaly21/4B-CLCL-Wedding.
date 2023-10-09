@@ -1,17 +1,14 @@
 <?php 
-
-if (!isset($_SESSION["validarIngreso"])) {
-   echo '<script>window.location="index.php?pagina=ingreso";</script>';  
-   return;
- } else {
-     if ($_SESSION["validarIngreso"] != "ok") {
-         echo '<script>window.location="index.php?pagina=ingreso";</script>';  
-         return;
-     }
- }
-
-?>
-
+    if(!isset($_SESSION["validarIngreso"])){
+      echo '<script>window.location="index.php?pagina=ingreso";</script>';
+      return;
+  } else{
+      if ($_SESSION["validarIngreso"] != "ok"){
+          echo '<script>window.location="index.php?pagina=ingreso";</script>';
+          return;
+      }
+  }
+  ?>
 <!--=========== Blog Section Here ========= -->
 <section class="blog__section pt-120 pb-120">
    <div class="left__shape">

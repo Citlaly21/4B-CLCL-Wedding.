@@ -4,7 +4,7 @@
         <div class="breadcumd__wrapper center">
         <div class="container-fluid">
     <div class="container py-5">
-    <div class="d-flex justify-content-center text-center; ">
+    <div class="d-flex justify-content-center text-center mt-5">
     <form class="p-5 bg-light" method="post" style="color: black;">
                 <div class="form-group">
                     <label for="Nombre" class="text-dark">Nombre:</label>
@@ -66,6 +66,7 @@
 </section>
 <style>
     .breadcumd__banner {
+    
     height: 100vh;
     margin: 0;
     padding: 0;
