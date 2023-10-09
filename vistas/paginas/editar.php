@@ -1,24 +1,23 @@
 <?php
-require_once("controladores/formularios.controlador.php");
+                require_once './controladores/formularios.controlador.php'
+                ?>
+<?php
 
 if (isset($_GET["token"])) {
     $item = "token";
     $valor = $_GET["token"];
 
-
-
-    
     $usuario = ControladorFormularios::ctrSeleccionarRegistros($item, $valor);
     //echo '<pre>'; print_r($usuario); '</pre>';
 }
 
 ?>
 
-<section class="breadcumd__banner">
 
 <div class="d-flex justify-content-center text-center">
 
     <form class="p-5 bg-light" method="post">
+        
         <div class="form-group">
 
             <div class="input-group">
@@ -68,6 +67,7 @@ if (isset($_GET["token"])) {
                 ?>">
             </div>
         </div>
+
         <?php
             $actualizar = ControladorFormularios::ctrActualizarRegistro();
             if ($actualizar == "ok") {
@@ -93,9 +93,11 @@ if (isset($_GET["token"])) {
             }
 
         ?>
-        <button type="submit" class="btn btn-primary">Actualizar</button>
-    </form>
-</div>
 
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+
+    </form>  
+     
 </div>
-</section>
+ 
+</div>

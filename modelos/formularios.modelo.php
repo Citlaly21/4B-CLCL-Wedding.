@@ -8,18 +8,10 @@ class ModeloFormularios{
      */
 
     static public function mdlRegistro($tabla, $datos){
-        # statement: declaracion de una instruccion 
-        # prepare() Prepara una sentencia SQL para ser ejecutada por el metodo.
-        # PDOStatement::execute(). La sentencia SQL puede contener cero o mas marcadores de 
-        # parametros con el nombre :name o  signos de interrogacion (?) por los cuales los valores
-        # reales seran sustituidos cuando la sentencia sea ejecutada. Ayuda a prevenir inyecciones SQL
-        # eliminando la necesidad de entrecomillar manualmente el parametr.
+    
 
         $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(token, nombre, email, password) VALUES (:token, :nombre, :email, :password)");
 
-        # bindParam() Vincula una variable de PHP a un parametro de sustitucion con nombre o 
-        # signos de interrogacion correspondiente de la sentencia SQL que fue usada para
-        # preparar la sentecia
 
         $stmt->bindParam(":token", $datos["token"], PDO::PARAM_STR);
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);

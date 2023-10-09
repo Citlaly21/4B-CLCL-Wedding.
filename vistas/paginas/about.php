@@ -1,3 +1,16 @@
+<?php 
+      if(!isset($_SESSION["validarIngreso"])){
+      echo '<script>window.location="index.php?pagina=ingreso";</script>';
+      return;
+   } else{
+      if ($_SESSION["validarIngreso"] != "ok"){
+            echo '<script>window.location="index.php?pagina=ingreso";</script>';
+            return;
+      }
+   }
+   ?>
+
+
 <!--=========== About Section Here ========= -->
 <section class="about__section style__two pt-120 pb-120">
    <div class="right__shape wow fadeInUp" data-wow-duration="4s">

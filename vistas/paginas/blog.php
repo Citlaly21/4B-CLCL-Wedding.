@@ -1,14 +1,14 @@
 <?php 
-    if(!isset($_SESSION["validarIngreso"])){
+      if(!isset($_SESSION["validarIngreso"])){
       echo '<script>window.location="index.php?pagina=ingreso";</script>';
       return;
-  } else{
+   } else{
       if ($_SESSION["validarIngreso"] != "ok"){
-          echo '<script>window.location="index.php?pagina=ingreso";</script>';
-          return;
+            echo '<script>window.location="index.php?pagina=ingreso";</script>';
+            return;
       }
-  }
-  ?>
+   }
+   ?>
 <!--=========== Blog Section Here ========= -->
 <section class="blog__section pt-120 pb-120">
    <div class="left__shape">

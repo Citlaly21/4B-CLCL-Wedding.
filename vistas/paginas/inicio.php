@@ -34,7 +34,7 @@
 
 <section class="breadcumd__banner">
 <table class="table table-striped tabla-blanca">
-    <thead>
+<thead>
         <tr>
             <th>#</th>
             <th>Nombre</th>
