@@ -10,13 +10,15 @@ class ControladorFormularios{
                 preg_match('/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})+$/', $_POST["registroEmail"]) &&
                 preg_match('/^[0-9a-zA-Z]+$/', $_POST["registroPassword"])) {
                 $tabla = "registros";
-    
+
                 $token = md5($_POST["registroNombre"] . "+" . $_POST["registroEmail"]);
-    
+
+                $encriptarPassword = crypt($_POST["registroPassword"], '$2a$07$wwwedding4bcomclclcl$');
+
                 $datos = array( "token" => $token,
                                 "nombre"=>$_POST["registroNombre"],
                                 "email"=>$_POST["registroEmail"],
-                                "password"=>$_POST["registroPassword"]);
+                                "password"=>$encriptarPassword);
     
                 $respuesta = ModeloFormularios::mdlRegistro($tabla, $datos);
                 return $respuesta;
@@ -53,7 +55,8 @@ class ControladorFormularios{
             if(is_array($respuesta)){
 
                 if ($respuesta["email"] == $_POST["ingresoEmail"] && $respuesta["password"] == $_POST["ingresoPassword"]) {
-                    
+                    ModeloFormularios::mdlActualizarIntentosFallidos($tabla, 0, $respuesta["token"]);
+
                     $_SESSION["validarIngreso"] = "ok";
                     
                     echo "Ingreso exitoso";
@@ -63,7 +66,20 @@ class ControladorFormularios{
                     }
                     window.location = "index.php?pagina=ingreso";
                     </script>';
-                } else {
+                } else { 
+                    if ($respuesta["intentos_fallidos"]< 3){
+                        $tabla="registros";
+                    
+                    $intentos_fallidos = $respuesta["intentos_fallidos"] + 1;
+
+                    $actualizarIntentosFallidos= ModeloFormularios::mdlActualizarIntentosFallidos($tabla, $intentos_fallidos,
+                    $respuesta["token"]);
+                    //echo '<pre>'; print_r($intentos_fallidos); echo '</pre>';
+                    }else{
+                        echo '<div class="alert alert-warning">RECAPTCHA! Debes validar que no eres un robot</div>';
+                    }
+                    
+
                     echo '<script>
                     if(window.history.replaceState){
                         window.history.replaceState(null, null, window.location.href);
